@@ -1,10 +1,10 @@
+import type { RequestHandler } from '@sveltejs/kit';
 import { DateTime } from 'luxon';
 import { createItem } from '$services/queries/items/items';
 import { createImageUrl } from '$services/utils/image-url';
 
-export const post = async ({ request, locals }) => {
+export const post: RequestHandler = async ({ request, locals }) => {
 	const data = await request.json();
-	console.log('Dados recebidos:', data);
 
 	const id = await createItem(
 		{
